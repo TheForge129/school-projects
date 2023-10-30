@@ -8,10 +8,10 @@ import zlib
 #wip code block to generate and write json settings file
 
 try:
-	settingsfile=open(os.path.join('c:\\users',os.getlogin(),'appdata\\local\\turtletargets\\settings.json'),"r+") #tries to open settings file
+    settingsfile=open(os.path.join('c:\\users',os.getlogin(),'appdata\\local\\turtletargets\\settings.json'),"r+") #tries to open settings file
 except:
-	try:
-		os.mkdir(os.path.join('c:\\users',os.getlogin(),'appdata\\local\\turtletargets')) #generates folder in c:\users\(username)\appdata
+    try:
+        os.mkdir(os.path.join('c:\\users',os.getlogin(),'appdata\\local\\turtletargets')) #generates folder in c:\users\(username)\appdata
     except:
         print("appdata/local/turtletargets already exists apparently, yet the settings file does not. creating file.")
     settingsfile=open(os.path.join('c:\\users',os.getlogin(),'appdata\\local\\turtletargets\\settings.json'),"xr+") #creates settings file
@@ -140,10 +140,10 @@ def updateTimer():
         turtle.ontimer(updateTimer,t=1000)
     else: #ending game if timer=0
         activetarget.ht() #no more active target
-        #try:
-        writeScoreToJson() #self-explanatory
-        #except:
-        #    print("JSON writing failed! Please contact the author with any debug information.") #self-explanatory
+        try:
+            writeScoreToJson() #self-explanatory
+        except:
+            print("JSON writing failed! Please contact the author with any debug information.") #self-explanatory
         activetarget.onclick(None) # all of this (to line 159) is just displaying the writing
         scoredisplay.color("#FFFFFF")
         timerdisplay.color("#FFFFFF")
